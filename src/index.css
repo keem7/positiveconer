@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,89 +6,89 @@
 
 @layer base {
   :root {
-    /* Positive Corner Luxury Palette */
+    /* Apple-inspired Minimal Luxury Palette */
     --background: 0 0% 100%;
-    --foreground: 216 47% 19%;
+    --foreground: 0 0% 7%;
 
     --card: 0 0% 100%;
-    --card-foreground: 216 47% 19%;
+    --card-foreground: 0 0% 7%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 216 47% 19%;
+    --popover-foreground: 0 0% 7%;
 
-    /* Midnight Navy */
-    --primary: 216 47% 19%;
+    /* Deep Navy - refined */
+    --primary: 220 40% 13%;
     --primary-foreground: 0 0% 100%;
 
-    /* Soft Navy for secondary */
-    --secondary: 216 30% 95%;
-    --secondary-foreground: 216 47% 19%;
+    /* Soft gray for secondary */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 7%;
 
-    --muted: 216 20% 96%;
-    --muted-foreground: 216 20% 45%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    /* Antique Gold */
-    --accent: 40 52% 56%;
-    --accent-foreground: 216 47% 19%;
+    /* Antique Gold - refined */
+    --accent: 42 65% 50%;
+    --accent-foreground: 0 0% 7%;
 
     /* Gold variants */
-    --gold: 40 52% 56%;
-    --gold-light: 40 52% 70%;
-    --gold-dark: 40 52% 45%;
+    --gold: 42 65% 50%;
+    --gold-light: 42 70% 60%;
+    --gold-dark: 42 60% 40%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 216 20% 90%;
-    --input: 216 20% 90%;
-    --ring: 40 52% 56%;
+    --border: 0 0% 92%;
+    --input: 0 0% 92%;
+    --ring: 42 65% 50%;
 
-    --radius: 0.25rem;
+    --radius: 1rem;
 
-    /* Custom shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(216 47% 19% / 0.08);
-    --shadow-elevated: 0 12px 40px -8px hsl(216 47% 19% / 0.15);
-    --shadow-gold: 0 4px 20px -4px hsl(40 52% 56% / 0.3);
+    /* Apple-style shadows */
+    --shadow-soft: 0 2px 8px -2px hsl(0 0% 0% / 0.05), 0 4px 16px -4px hsl(0 0% 0% / 0.08);
+    --shadow-elevated: 0 8px 30px -6px hsl(0 0% 0% / 0.12), 0 18px 50px -10px hsl(0 0% 0% / 0.1);
+    --shadow-gold: 0 8px 30px -6px hsl(42 65% 50% / 0.25);
 
     /* Sidebar tokens */
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 216 47% 19%;
-    --sidebar-primary: 216 47% 19%;
+    --sidebar-foreground: 0 0% 7%;
+    --sidebar-primary: 220 40% 13%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 40 52% 56%;
-    --sidebar-accent-foreground: 216 47% 19%;
-    --sidebar-border: 216 20% 90%;
-    --sidebar-ring: 40 52% 56%;
+    --sidebar-accent: 42 65% 50%;
+    --sidebar-accent-foreground: 0 0% 7%;
+    --sidebar-border: 0 0% 92%;
+    --sidebar-ring: 42 65% 50%;
   }
 
   .dark {
-    --background: 216 47% 10%;
+    --background: 0 0% 5%;
     --foreground: 0 0% 98%;
-    --card: 216 47% 12%;
+    --card: 0 0% 8%;
     --card-foreground: 0 0% 98%;
-    --popover: 216 47% 12%;
+    --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
-    --primary: 40 52% 56%;
-    --primary-foreground: 216 47% 10%;
-    --secondary: 216 40% 20%;
+    --primary: 42 65% 55%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 216 40% 18%;
-    --muted-foreground: 216 20% 65%;
-    --accent: 40 52% 56%;
-    --accent-foreground: 216 47% 10%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 42 65% 50%;
+    --accent-foreground: 0 0% 5%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
-    --border: 216 40% 20%;
-    --input: 216 40% 20%;
-    --ring: 40 52% 56%;
-    --sidebar-background: 216 47% 10%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 42 65% 50%;
+    --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 40 52% 56%;
-    --sidebar-primary-foreground: 216 47% 10%;
-    --sidebar-accent: 216 40% 18%;
+    --sidebar-primary: 42 65% 55%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 12%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 216 40% 20%;
-    --sidebar-ring: 40 52% 56%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 42 65% 50%;
   }
 }
 
@@ -97,23 +97,31 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+    letter-spacing: -0.025em;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Playfair Display', serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+    letter-spacing: -0.025em;
   }
 
   .font-body {
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
   }
 
   .text-gold-gradient {
@@ -127,6 +135,12 @@
     background: linear-gradient(135deg, hsl(var(--gold-light)), hsl(var(--gold)));
   }
 
+  .bg-glass {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
   .shadow-soft {
     box-shadow: var(--shadow-soft);
   }
@@ -137,5 +151,14 @@
 
   .shadow-gold {
     box-shadow: var(--shadow-gold);
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }

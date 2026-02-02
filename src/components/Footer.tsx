@@ -1,26 +1,46 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, ArrowUpRight } from "lucide-react";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-primary text-primary-foreground py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer className="bg-primary text-primary-foreground">
+      {/* Main Footer */}
+      <div className="container mx-auto px-6 lg:px-8 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="lg:col-span-2"
           >
-            <h3 className="font-display text-2xl font-semibold mb-4">
-              Positive Corner
-            </h3>
-            <p className="text-accent font-medium tracking-widest text-sm mb-4">
-              CRAFTING POSITIVITY TOGETHER
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
+                <span className="text-primary font-semibold text-lg">P</span>
+              </div>
+              <h3 className="font-display text-xl font-semibold">
+                Positive Corner
+              </h3>
+            </div>
+            <p className="text-primary-foreground/60 leading-relaxed max-w-md mb-8">
+              Your destination for premium jewelry, custom gear, electronics, and authentic 
+              sports merchandise. Crafting positivity together since 2020.
             </p>
-            <p className="text-primary-foreground/70 leading-relaxed">
-              Your destination for premium jewelry, custom gear, electronics, and authentic sports merchandise. Quality meets affordability.
-            </p>
+            
+            {/* Social Links */}
+            <div className="flex items-center gap-3">
+              <SocialLink href="https://tiktok.com/@positivecorner247" label="TikTok">
+                <TikTokIcon />
+              </SocialLink>
+              <SocialLink href="https://instagram.com/positivecorner247" label="Instagram">
+                <InstagramIcon />
+              </SocialLink>
+              <SocialLink href="https://facebook.com/positivecorner247" label="Facebook">
+                <FacebookIcon />
+              </SocialLink>
+            </div>
           </motion.div>
 
           {/* Quick Links */}
@@ -30,17 +50,18 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h4 className="font-display text-lg font-semibold mb-4">
+            <h4 className="font-medium text-sm uppercase tracking-wider text-primary-foreground/40 mb-6">
               Categories
             </h4>
-            <ul className="space-y-2">
-              {["Fine Jewelry", "Phone Frames & Cases", "Customized Gear", "Electronics", "Sports"].map((item) => (
+            <ul className="space-y-3">
+              {["Fine Jewelry", "Phone Cases", "Custom Gear", "Electronics", "Sports"].map((item) => (
                 <li key={item}>
                   <a
-                    href="#"
-                    className="text-primary-foreground/70 hover:text-accent transition-colors duration-300"
+                    href="#products"
+                    className="group inline-flex items-center gap-2 text-primary-foreground/60 hover:text-accent transition-colors duration-300"
                   >
                     {item}
+                    <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
                   </a>
                 </li>
               ))}
@@ -54,63 +75,54 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h4 className="font-display text-lg font-semibold mb-4">
+            <h4 className="font-medium text-sm uppercase tracking-wider text-primary-foreground/40 mb-6">
               Contact Us
             </h4>
             <ul className="space-y-4">
-              <li className="flex items-center gap-3">
-                <Phone size={18} className="text-accent" />
-                <div>
-                  <a
-                    href="tel:+1234567890"
-                    className="text-primary-foreground/70 hover:text-accent transition-colors duration-300"
-                  >
-                    +1 (234) 567-890
-                  </a>
-                </div>
+              <li>
+                <a
+                  href="tel:+1234567890"
+                  className="flex items-center gap-3 text-primary-foreground/60 hover:text-accent transition-colors"
+                >
+                  <Phone size={18} />
+                  <span>+1 (234) 567-890</span>
+                </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone size={18} className="text-accent" />
-                <div>
-                  <a
-                    href="tel:+0987654321"
-                    className="text-primary-foreground/70 hover:text-accent transition-colors duration-300"
-                  >
-                    +0 (987) 654-321
-                  </a>
-                </div>
+              <li>
+                <a
+                  href="tel:+0987654321"
+                  className="flex items-center gap-3 text-primary-foreground/60 hover:text-accent transition-colors"
+                >
+                  <Phone size={18} />
+                  <span>+0 (987) 654-321</span>
+                </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail size={18} className="text-accent" />
+              <li>
                 <a
                   href="mailto:hello@positivecorner.com"
-                  className="text-primary-foreground/70 hover:text-accent transition-colors duration-300"
+                  className="flex items-center gap-3 text-primary-foreground/60 hover:text-accent transition-colors"
                 >
-                  hello@positivecorner.com
+                  <Mail size={18} />
+                  <span>hello@positivecorner.com</span>
                 </a>
               </li>
             </ul>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-4 mt-6">
-              <SocialLink href="https://tiktok.com/@positivecorner247" label="TikTok">
-                <TikTokIcon />
-              </SocialLink>
-              <SocialLink href="https://instagram.com/positivecorner247" label="Instagram">
-                <InstagramIcon />
-              </SocialLink>
-              <SocialLink href="https://facebook.com/positivecorner247" label="Facebook">
-                <FacebookIcon />
-              </SocialLink>
-            </div>
           </motion.div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center">
-          <p className="text-primary-foreground/50 text-sm">
-            © {new Date().getFullYear()} Positive Corner. All rights reserved.
-          </p>
+      {/* Bottom Bar */}
+      <div className="border-t border-primary-foreground/10">
+        <div className="container mx-auto px-6 lg:px-8 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-primary-foreground/40">
+              © {currentYear} Positive Corner. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6 text-sm text-primary-foreground/40">
+              <a href="#" className="hover:text-accent transition-colors">Privacy</a>
+              <a href="#" className="hover:text-accent transition-colors">Terms</a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
@@ -131,7 +143,7 @@ const SocialLink = ({
     target="_blank"
     rel="noopener noreferrer"
     aria-label={label}
-    className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-foreground/10 text-primary-foreground hover:bg-accent hover:text-primary transition-all duration-300"
+    className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-foreground/10 text-primary-foreground/60 hover:bg-accent hover:text-primary transition-all duration-300"
   >
     {children}
   </a>
