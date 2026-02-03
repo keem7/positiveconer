@@ -74,7 +74,7 @@ const WishlistDrawer = ({ isOpen, onClose }: WishlistDrawerProps) => {
                       <div className="flex-1 min-w-0">
                         <h3 className="font-medium text-sm truncate">{product.name}</h3>
                         <p className="text-xs text-muted-foreground">{product.subcategory}</p>
-                        <p className="text-accent font-semibold mt-1">${product.price}</p>
+                        <p className="text-accent font-semibold mt-1">Le {product.price.toLocaleString()}</p>
                         
                         <button
                           onClick={() => addToCart(product)}

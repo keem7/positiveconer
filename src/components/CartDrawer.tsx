@@ -15,11 +15,11 @@ const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
     const items = cart
       .map((p) => {
         const cat = categories.find((c) => c.id === p.category)?.label;
-        return `- ${p.name} (${cat}) - $${p.price}`;
+        return `- ${p.name} (${cat}) - Le ${p.price.toLocaleString()}`;
       })
       .join("\n");
     
-    const message = `Hello Positive Corner! I'd like to order:\n\n${items}\n\nTotal: $${cartTotal}\n\nIs this available?`;
+    const message = `Hello Positive Corner! I'd like to order:\n\n${items}\n\nTotal: Le ${cartTotal.toLocaleString()}\n\nIs this available?`;
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   };
 
@@ -87,7 +87,7 @@ const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
                       <div className="flex-1 min-w-0">
                         <h3 className="font-medium text-sm truncate">{product.name}</h3>
                         <p className="text-xs text-muted-foreground">{product.subcategory}</p>
-                        <p className="text-accent font-semibold mt-1">${product.price}</p>
+                        <p className="text-accent font-semibold mt-1">Le {product.price.toLocaleString()}</p>
                       </div>
                       <button
                         onClick={() => removeFromCart(product.id)}
@@ -107,7 +107,7 @@ const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Total</span>
                   <span className="font-display text-2xl font-semibold text-accent">
-                    ${cartTotal}
+                    Le {cartTotal.toLocaleString()}
                   </span>
                 </div>
                 

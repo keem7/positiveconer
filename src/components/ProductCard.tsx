@@ -107,7 +107,7 @@ const ProductCard = ({ product, index, onImageClick }: ProductCardProps) => {
           
           {/* Price */}
           <span className="font-display text-lg font-semibold text-accent whitespace-nowrap">
-            ${product.price}
+            Le {product.price.toLocaleString()}
           </span>
         </div>
 
