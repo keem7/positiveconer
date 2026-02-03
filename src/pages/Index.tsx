@@ -5,10 +5,15 @@ import HeroSection from "@/components/HeroSection";
 import ProductGrid from "@/components/ProductGrid";
 import Lightbox from "@/components/Lightbox";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import CartDrawer from "@/components/CartDrawer";
+import WishlistDrawer from "@/components/WishlistDrawer";
 
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("all");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [wishlistOpen, setWishlistOpen] = useState(false);
 
   const handleCategoryChange = (category: Category) => {
     setActiveCategory(category);
@@ -24,6 +29,8 @@ const Index = () => {
       <Header
         activeCategory={activeCategory}
         onCategoryChange={handleCategoryChange}
+        onCartOpen={() => setCartOpen(true)}
+        onWishlistOpen={() => setWishlistOpen(true)}
       />
       
       <main>
@@ -41,6 +48,10 @@ const Index = () => {
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
       />
+
+      <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+      <WishlistDrawer isOpen={wishlistOpen} onClose={() => setWishlistOpen(false)} />
+      <FloatingWhatsApp />
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, MessageCircle, ChevronRight } from "lucide-react";
+import { X, MessageCircle, ChevronRight, Heart, ShoppingBag } from "lucide-react";
 import { Product, getWhatsAppLink, categories } from "@/data/products";
 import { useEffect } from "react";
+import { useShop } from "@/contexts/ShopContext";
 
 interface LightboxProps {
   product: Product | null;
@@ -9,6 +10,8 @@ interface LightboxProps {
 }
 
 const Lightbox = ({ product, onClose }: LightboxProps) => {
+  const { addToCart, addToWishlist, removeFromWishlist, isInCart, isInWishlist } = useShop();
+
   // Lock body scroll when lightbox is open
   useEffect(() => {
     if (product) {
@@ -33,6 +36,14 @@ const Lightbox = ({ product, onClose }: LightboxProps) => {
   if (!product) return null;
 
   const categoryLabel = categories.find(c => c.id === product.category)?.label;
+
+  const handleWishlistToggle = () => {
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -79,6 +90,18 @@ const Lightbox = ({ product, onClose }: LightboxProps) => {
                   (e.target as HTMLImageElement).src = "/placeholder.svg";
                 }}
               />
+              
+              {/* Wishlist Button */}
+              <button
+                onClick={handleWishlistToggle}
+                className={`absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 ${
+                  isInWishlist(product.id)
+                    ? "bg-accent text-accent-foreground"
+                    : "bg-background/95 backdrop-blur-sm text-foreground hover:bg-accent hover:text-accent-foreground"
+                }`}
+              >
+                <Heart size={20} fill={isInWishlist(product.id) ? "currentColor" : "none"} />
+              </button>
             </div>
 
             {/* Details */}
@@ -133,18 +156,35 @@ const Lightbox = ({ product, onClose }: LightboxProps) => {
                   </div>
                 </div>
 
-                <a
-                  href={getWhatsAppLink(product)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-medium rounded-2xl hover:shadow-elevated transition-all duration-300 hover:scale-[1.02]"
-                >
-                  <MessageCircle size={20} />
-                  Order via WhatsApp
-                </a>
+                <div className="space-y-3">
+                  {/* Add to Cart Button */}
+                  <button
+                    onClick={() => addToCart(product)}
+                    disabled={isInCart(product.id)}
+                    className={`w-full inline-flex items-center justify-center gap-3 px-8 py-4 font-medium rounded-2xl transition-all duration-300 ${
+                      isInCart(product.id)
+                        ? "bg-secondary text-muted-foreground cursor-not-allowed"
+                        : "bg-foreground text-background hover:shadow-elevated hover:scale-[1.02]"
+                    }`}
+                  >
+                    <ShoppingBag size={20} />
+                    {isInCart(product.id) ? "Added to Cart" : "Add to Cart"}
+                  </button>
+
+                  {/* WhatsApp Button */}
+                  <a
+                    href={getWhatsAppLink(product)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-medium rounded-2xl hover:shadow-elevated transition-all duration-300 hover:scale-[1.02]"
+                  >
+                    <MessageCircle size={20} />
+                    Order via WhatsApp
+                  </a>
+                </div>
 
                 <p className="text-center text-sm text-muted-foreground mt-4">
-                  Click to start a conversation on WhatsApp
+                  Add to cart or start a conversation on WhatsApp
                 </p>
               </motion.div>
             </div>
