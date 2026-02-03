@@ -93,9 +93,9 @@ const HeroSection = () => {
             className="flex items-center justify-center gap-12 mt-20"
           >
             {[
-              { value: "500+", label: "Products" },
-              { value: "24h", label: "Delivery" },
-              { value: "5K+", label: "Happy Customers" },
+              { value: "50+", label: "Products" },
+              { value: "Nationwide", label: "Delivery" },
+              { value: "70+", label: "Happy Customers" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}

@@ -151,7 +151,7 @@ const Lightbox = ({ product, onClose }: LightboxProps) => {
                   <div>
                     <p className="text-sm text-muted-foreground mb-1">Price</p>
                     <span className="font-display text-4xl font-semibold text-accent">
-                      ${product.price}
+                      Le {product.price.toLocaleString()}
                     </span>
                   </div>
                 </div>
