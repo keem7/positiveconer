@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Product, getWhatsAppLink, categories } from "@/data/products";
-import { MessageCircle, ExternalLink } from "lucide-react";
+import { MessageCircle, ExternalLink, Heart, ShoppingBag } from "lucide-react";
+import { useShop } from "@/contexts/ShopContext";
 
 interface ProductCardProps {
   product: Product;
@@ -9,7 +10,22 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, index, onImageClick }: ProductCardProps) => {
+  const { addToCart, addToWishlist, removeFromWishlist, isInCart, isInWishlist } = useShop();
   const categoryLabel = categories.find(c => c.id === product.category)?.label;
+
+  const handleWishlistToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addToCart(product);
+  };
 
   return (
     <motion.div
@@ -61,6 +77,18 @@ const ProductCard = ({ product, index, onImageClick }: ProductCardProps) => {
             {product.subcategory}
           </span>
         </div>
+
+        {/* Wishlist Button */}
+        <button
+          onClick={handleWishlistToggle}
+          className={`absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 ${
+            isInWishlist(product.id)
+              ? "bg-accent text-accent-foreground"
+              : "bg-background/95 backdrop-blur-sm text-foreground hover:bg-accent hover:text-accent-foreground"
+          }`}
+        >
+          <Heart size={16} fill={isInWishlist(product.id) ? "currentColor" : "none"} />
+        </button>
       </div>
 
       {/* Content */}
@@ -83,23 +111,33 @@ const ProductCard = ({ product, index, onImageClick }: ProductCardProps) => {
           </span>
         </div>
 
-        {/* WhatsApp Button */}
-        <a
-          href={getWhatsAppLink(product)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group/btn inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-accent transition-colors duration-300"
-        >
-          <MessageCircle size={16} />
-          <span>Order via WhatsApp</span>
-          <motion.span
-            initial={{ x: 0 }}
-            whileHover={{ x: 3 }}
-            className="text-accent"
+        {/* Action Buttons */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleAddToCart}
+            disabled={isInCart(product.id)}
+            className={`inline-flex items-center gap-2 text-sm font-medium transition-colors duration-300 ${
+              isInCart(product.id)
+                ? "text-muted-foreground cursor-not-allowed"
+                : "text-foreground hover:text-accent"
+            }`}
           >
-            →
-          </motion.span>
-        </a>
+            <ShoppingBag size={16} />
+            <span>{isInCart(product.id) ? "In Cart" : "Add to Cart"}</span>
+          </button>
+          
+          <span className="text-border">|</span>
+          
+          <a
+            href={getWhatsAppLink(product)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-accent transition-colors duration-300"
+          >
+            <MessageCircle size={16} />
+            <span>WhatsApp</span>
+          </a>
+        </div>
       </div>
     </motion.div>
   );

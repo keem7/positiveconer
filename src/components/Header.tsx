@@ -1,15 +1,19 @@
 import { motion } from "framer-motion";
 import { Category, categories } from "@/data/products";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag, Heart } from "lucide-react";
 import { useState } from "react";
+import { useShop } from "@/contexts/ShopContext";
 
 interface HeaderProps {
   activeCategory: Category;
   onCategoryChange: (category: Category) => void;
+  onCartOpen: () => void;
+  onWishlistOpen: () => void;
 }
 
-const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
+const Header = ({ activeCategory, onCategoryChange, onCartOpen, onWishlistOpen }: HeaderProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { cart, wishlist } = useShop();
 
   return (
     <motion.header
@@ -71,31 +75,62 @@ const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
             ))}
           </nav>
 
-          {/* Social Icons - Desktop */}
+          {/* Right Actions */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="hidden md:flex items-center gap-2"
+            className="flex items-center gap-1"
           >
-            <SocialLink href="https://tiktok.com/@positivecorner247" label="TikTok">
-              <TikTokIcon />
-            </SocialLink>
-            <SocialLink href="https://instagram.com/positivecorner247" label="Instagram">
-              <InstagramIcon />
-            </SocialLink>
-            <SocialLink href="https://facebook.com/positivecorner247" label="Facebook">
-              <FacebookIcon />
-            </SocialLink>
-          </motion.div>
+            {/* Wishlist */}
+            <button
+              onClick={onWishlistOpen}
+              className="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-secondary transition-colors"
+              aria-label="Wishlist"
+            >
+              <Heart size={20} />
+              {wishlist.length > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-accent text-accent-foreground text-xs font-medium rounded-full flex items-center justify-center">
+                  {wishlist.length}
+                </span>
+              )}
+            </button>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-secondary transition-colors"
-          >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+            {/* Cart */}
+            <button
+              onClick={onCartOpen}
+              className="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-secondary transition-colors"
+              aria-label="Cart"
+            >
+              <ShoppingBag size={20} />
+              {cart.length > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-accent text-accent-foreground text-xs font-medium rounded-full flex items-center justify-center">
+                  {cart.length}
+                </span>
+              )}
+            </button>
+
+            {/* Social Icons - Desktop */}
+            <div className="hidden md:flex items-center gap-1 ml-2 pl-2 border-l border-border">
+              <SocialLink href="https://tiktok.com/@positivecorner247" label="TikTok">
+                <TikTokIcon />
+              </SocialLink>
+              <SocialLink href="https://instagram.com/positivecorner247" label="Instagram">
+                <InstagramIcon />
+              </SocialLink>
+              <SocialLink href="https://facebook.com/positivecorner247" label="Facebook">
+                <FacebookIcon />
+              </SocialLink>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-secondary transition-colors ml-1"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </motion.div>
         </div>
 
         {/* Mobile Navigation */}
