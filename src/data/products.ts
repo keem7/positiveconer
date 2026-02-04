@@ -1,10 +1,12 @@
 export type Category = 
   | "all"
-  | "jewelry" 
-  | "phone-frames" 
-  | "customized-gear" 
-  | "electronics" 
-  | "sports";
+  | "watches" 
+  | "chains" 
+  | "wallets" 
+  | "water-bottles" 
+  | "bracelets"
+  | "led-lights"
+  | "jerseys";
 
 export interface Product {
   id: string;
@@ -16,227 +18,249 @@ export interface Product {
   description?: string;
 }
 
-export const categories: { id: Category; label: string }[] = [
-  { id: "all", label: "All Products" },
-  { id: "jewelry", label: "Fine Jewelry" },
-  { id: "phone-frames", label: "Phone Frames & Cases" },
-  { id: "customized-gear", label: "Customized Gear" },
-  { id: "electronics", label: "Electronics" },
-  { id: "sports", label: "Sports" },
+export const categories: { id: Category; label: string; tagline: string }[] = [
+  { id: "all", label: "All Products", tagline: "Browse our entire collection" },
+  { id: "watches", label: "Watches", tagline: "Get your own customized watch" },
+  { id: "chains", label: "Chains", tagline: "Get your own customized chain" },
+  { id: "wallets", label: "Wallets", tagline: "Get your own customized wallet" },
+  { id: "water-bottles", label: "Water Bottles", tagline: "Get your own customized water bottle" },
+  { id: "bracelets", label: "Bracelets", tagline: "Get your own customized bracelet" },
+  { id: "led-lights", label: "LED Lights", tagline: "Get your own customized LED light" },
+  { id: "jerseys", label: "Jerseys", tagline: "Get your own customized jersey" },
 ];
 
 export const products: Product[] = [
-  // Fine Jewelry
+  // Watches
   {
-    id: "j-001",
-    name: "Golden Elegance Necklace",
-    category: "jewelry",
-    subcategory: "Necklaces",
-    price: 289,
+    id: "w-001",
+    name: "Classic Gold Watch",
+    category: "watches",
+    subcategory: "Watches",
+    price: 350,
     image: "/products/necklace-1.jpg",
-    description: "18K gold-plated pendant with Austrian crystals"
+    description: "Get your own customized watch"
   },
   {
-    id: "j-002",
-    name: "Diamond Eternity Ring",
-    category: "jewelry",
-    subcategory: "Rings",
-    price: 459,
+    id: "w-002",
+    name: "Silver Executive Watch",
+    category: "watches",
+    subcategory: "Watches",
+    price: 420,
     image: "/products/ring-1.jpg",
-    description: "Sterling silver with cubic zirconia stones"
+    description: "Get your own customized watch"
   },
   {
-    id: "j-003",
-    name: "Pearl Drop Bracelet",
-    category: "jewelry",
-    subcategory: "Bracelets",
-    price: 199,
-    image: "/products/bracelet-1.jpg",
-    description: "Freshwater pearls on delicate gold chain"
-  },
-  {
-    id: "j-004",
-    name: "Sapphire Pendant Necklace",
-    category: "jewelry",
-    subcategory: "Necklaces",
-    price: 349,
-    image: "/products/necklace-2.jpg",
-    description: "Blue sapphire centerpiece with halo setting"
-  },
-  {
-    id: "j-005",
-    name: "Rose Gold Stackable Rings",
-    category: "jewelry",
-    subcategory: "Rings",
-    price: 179,
+    id: "w-003",
+    name: "Black Diamond Watch",
+    category: "watches",
+    subcategory: "Watches",
+    price: 550,
     image: "/products/ring-2.jpg",
-    description: "Set of 3 minimalist rose gold bands"
+    description: "Get your own customized watch"
   },
-  // Phone Frames & Cases
-  {
-    id: "p-001",
-    name: "Midnight Leather Case",
-    category: "phone-frames",
-    subcategory: "Premium Cases",
-    price: 89,
-    image: "/products/phone-case-1.jpg",
-    description: "Genuine Italian leather with gold accents"
-  },
-  {
-    id: "p-002",
-    name: "Crystal Clear Frame",
-    category: "phone-frames",
-    subcategory: "Premium Cases",
-    price: 69,
-    image: "/products/phone-case-2.jpg",
-    description: "Shockproof transparent case with gold trim"
-  },
-  {
-    id: "p-003",
-    name: "Marble Luxury Case",
-    category: "phone-frames",
-    subcategory: "Premium Cases",
-    price: 79,
-    image: "/products/phone-case-3.jpg",
-    description: "Real marble finish with protective edges"
-  },
-  // Customized Gear
+  // Chains
   {
     id: "c-001",
-    name: "Executive Leather Wallet",
-    category: "customized-gear",
-    subcategory: "Wallets",
-    price: 129,
-    image: "/products/wallet-1.jpg",
-    description: "RFID-blocking genuine leather with monogram"
+    name: "Cuban Link Chain",
+    category: "chains",
+    subcategory: "Chains",
+    price: 289,
+    image: "/products/necklace-1.jpg",
+    description: "Get your own customized chain"
   },
   {
     id: "c-002",
-    name: "Premium Snapback Cap",
-    category: "customized-gear",
-    subcategory: "Caps",
-    price: 59,
-    image: "/products/cap-1.jpg",
-    description: "Custom embroidered wool blend cap"
+    name: "Rope Chain Gold",
+    category: "chains",
+    subcategory: "Chains",
+    price: 320,
+    image: "/products/necklace-2.jpg",
+    description: "Get your own customized chain"
   },
   {
     id: "c-003",
-    name: "Insulated Steel Bottle",
-    category: "customized-gear",
-    subcategory: "Water Bottles",
-    price: 45,
-    image: "/products/bottle-1.jpg",
-    description: "24hr cold / 12hr hot vacuum insulated"
+    name: "Pendant Chain Set",
+    category: "chains",
+    subcategory: "Chains",
+    price: 380,
+    image: "/products/bracelet-1.jpg",
+    description: "Get your own customized chain"
+  },
+  // Wallets
+  {
+    id: "wl-001",
+    name: "Executive Leather Wallet",
+    category: "wallets",
+    subcategory: "Wallets",
+    price: 129,
+    image: "/products/wallet-1.jpg",
+    description: "Get your own customized wallet"
   },
   {
-    id: "c-004",
-    name: "Classic Dad Cap",
-    category: "customized-gear",
-    subcategory: "Caps",
-    price: 49,
-    image: "/products/cap-2.jpg",
-    description: "Adjustable cotton cap with embroidery"
-  },
-  {
-    id: "c-005",
+    id: "wl-002",
     name: "Slim Card Wallet",
-    category: "customized-gear",
+    category: "wallets",
     subcategory: "Wallets",
     price: 79,
     image: "/products/wallet-2.jpg",
-    description: "Minimalist design, holds 6 cards"
+    description: "Get your own customized wallet"
   },
-  // Electronics
   {
-    id: "e-001",
-    name: "Ambient LED Light Strip",
-    category: "electronics",
+    id: "wl-003",
+    name: "Premium Bifold Wallet",
+    category: "wallets",
+    subcategory: "Wallets",
+    price: 99,
+    image: "/products/phone-case-1.jpg",
+    description: "Get your own customized wallet"
+  },
+  // Water Bottles
+  {
+    id: "wb-001",
+    name: "Insulated Steel Bottle",
+    category: "water-bottles",
+    subcategory: "Water Bottles",
+    price: 45,
+    image: "/products/bottle-1.jpg",
+    description: "Get your own customized water bottle"
+  },
+  {
+    id: "wb-002",
+    name: "Sport Water Bottle",
+    category: "water-bottles",
+    subcategory: "Water Bottles",
+    price: 35,
+    image: "/products/bottle-1.jpg",
+    description: "Get your own customized water bottle"
+  },
+  {
+    id: "wb-003",
+    name: "Premium Flask Bottle",
+    category: "water-bottles",
+    subcategory: "Water Bottles",
+    price: 55,
+    image: "/products/bottle-1.jpg",
+    description: "Get your own customized water bottle"
+  },
+  // Bracelets
+  {
+    id: "br-001",
+    name: "Gold Link Bracelet",
+    category: "bracelets",
+    subcategory: "Bracelets",
+    price: 199,
+    image: "/products/bracelet-1.jpg",
+    description: "Get your own customized bracelet"
+  },
+  {
+    id: "br-002",
+    name: "Silver Chain Bracelet",
+    category: "bracelets",
+    subcategory: "Bracelets",
+    price: 159,
+    image: "/products/bracelet-1.jpg",
+    description: "Get your own customized bracelet"
+  },
+  {
+    id: "br-003",
+    name: "Diamond Tennis Bracelet",
+    category: "bracelets",
+    subcategory: "Bracelets",
+    price: 280,
+    image: "/products/bracelet-1.jpg",
+    description: "Get your own customized bracelet"
+  },
+  // LED Lights
+  {
+    id: "led-001",
+    name: "RGB LED Strip",
+    category: "led-lights",
     subcategory: "LED Lights",
     price: 39,
     image: "/products/led-1.jpg",
-    description: "5m RGB strip with remote control"
+    description: "Get your own customized LED light"
   },
   {
-    id: "e-002",
+    id: "led-002",
     name: "Smart Desk Lamp",
-    category: "electronics",
+    category: "led-lights",
     subcategory: "LED Lights",
     price: 89,
     image: "/products/led-2.jpg",
-    description: "Touch control with wireless charging base"
+    description: "Get your own customized LED light"
   },
   {
-    id: "e-003",
-    name: "Portable Power Bank",
-    category: "electronics",
-    subcategory: "Gadgets",
-    price: 59,
-    image: "/products/gadget-1.jpg",
-    description: "20000mAh fast charging power bank"
-  },
-  {
-    id: "e-004",
+    id: "led-003",
     name: "Neon Sign Custom",
-    category: "electronics",
+    category: "led-lights",
     subcategory: "LED Lights",
     price: 149,
     image: "/products/led-3.jpg",
-    description: "Custom LED neon sign for room decor"
+    description: "Get your own customized LED light"
   },
-  // Sports - Soccer Jerseys
   {
-    id: "s-001",
+    id: "led-004",
+    name: "Gaming LED Setup",
+    category: "led-lights",
+    subcategory: "LED Lights",
+    price: 75,
+    image: "/products/led-1.jpg",
+    description: "Get your own customized LED light"
+  },
+  // Jerseys
+  {
+    id: "j-001",
     name: "Real Madrid Home Jersey",
-    category: "sports",
+    category: "jerseys",
     subcategory: "Football Jerseys",
     price: 89,
     image: "/products/jersey-1.jpg",
-    description: "2024/25 Season authentic replica"
+    description: "Get your own customized jersey"
   },
   {
-    id: "s-002",
+    id: "j-002",
     name: "Barcelona Away Jersey",
-    category: "sports",
+    category: "jerseys",
     subcategory: "Football Jerseys",
     price: 89,
     image: "/products/jersey-2.jpg",
-    description: "2024/25 Season authentic replica"
+    description: "Get your own customized jersey"
   },
   {
-    id: "s-003",
+    id: "j-003",
     name: "Manchester United Home",
-    category: "sports",
+    category: "jerseys",
     subcategory: "Football Jerseys",
     price: 89,
     image: "/products/jersey-3.jpg",
-    description: "2024/25 Season authentic replica"
+    description: "Get your own customized jersey"
   },
   {
-    id: "s-004",
+    id: "j-004",
     name: "PSG Third Kit Jersey",
-    category: "sports",
+    category: "jerseys",
     subcategory: "Football Jerseys",
     price: 95,
     image: "/products/jersey-4.jpg",
-    description: "Limited edition third kit"
+    description: "Get your own customized jersey"
   },
   {
-    id: "s-005",
+    id: "j-005",
     name: "Liverpool Home Jersey",
-    category: "sports",
+    category: "jerseys",
     subcategory: "Football Jerseys",
     price: 89,
     image: "/products/jersey-5.jpg",
-    description: "2024/25 Season authentic replica"
+    description: "Get your own customized jersey"
   },
   {
-    id: "s-006",
+    id: "j-006",
     name: "Bayern Munich Home",
-    category: "sports",
+    category: "jerseys",
     subcategory: "Football Jerseys",
     price: 89,
     image: "/products/jersey-6.jpg",
-    description: "2024/25 Season authentic replica"
+    description: "Get your own customized jersey"
   },
 ];
 
@@ -244,9 +268,7 @@ export const WHATSAPP_NUMBER = "23278722136";
 export const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export const generateWhatsAppMessage = (product: Product): string => {
-  const message = `Hello Positive Corner! I am interested in the ${product.name} from the ${
-    categories.find(c => c.id === product.category)?.label || product.category
-  } section. Is this available for order?`;
+  const message = `Hello Positive Corner! I am interested in the ${product.name}. Is this available for order?`;
   return encodeURIComponent(message);
 };
 
