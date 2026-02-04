@@ -81,29 +81,20 @@ const Footer = () => {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+23278722136"
                   className="flex items-center gap-3 text-primary-foreground/60 hover:text-accent transition-colors"
                 >
                   <Phone size={18} />
-                  <span>+1 (234) 567-890</span>
+                  <span>+232 78 722136</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+0987654321"
-                  className="flex items-center gap-3 text-primary-foreground/60 hover:text-accent transition-colors"
-                >
-                  <Phone size={18} />
-                  <span>+0 (987) 654-321</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:hello@positivecorner.com"
+                  href="mailto:jallohpositive@gmail.com"
                   className="flex items-center gap-3 text-primary-foreground/60 hover:text-accent transition-colors"
                 >
                   <Mail size={18} />
-                  <span>hello@positivecorner.com</span>
+                  <span>jallohpositive@gmail.com</span>
                 </a>
               </li>
             </ul>
