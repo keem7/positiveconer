@@ -54,7 +54,7 @@ const Footer = () => {
               Categories
             </h4>
             <ul className="space-y-3">
-              {["Fine Jewelry", "Phone Cases", "Custom Gear", "Electronics", "Sports"].map((item) => (
+              {["Watches", "Chains", "Wallets", "Water Bottles", "Bracelets", "LED Lights", "Jerseys"].map((item) => (
                 <li key={item}>
                   <a
                     href="#products"
