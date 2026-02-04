@@ -240,7 +240,7 @@ export const products: Product[] = [
   },
 ];
 
-export const WHATSAPP_NUMBER = "1234567890"; // Replace with actual number
+export const WHATSAPP_NUMBER = "23278722136";
 export const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export const generateWhatsAppMessage = (product: Product): string => {
