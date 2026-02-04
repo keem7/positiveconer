@@ -47,6 +47,7 @@ const Index = () => {
       <Lightbox
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
+        onProductChange={setSelectedProduct}
       />
 
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
