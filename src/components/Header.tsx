@@ -3,6 +3,7 @@ import { Category, categories } from "@/data/products";
 import { Menu, X, ShoppingBag, Heart } from "lucide-react";
 import { useState } from "react";
 import { useShop } from "@/contexts/ShopContext";
+import logo from "@/assets/logo.jpeg";
 
 interface HeaderProps {
   activeCategory: Category;
@@ -32,9 +33,11 @@ const Header = ({ activeCategory, onCategoryChange, onCartOpen, onWishlistOpen }
             transition={{ delay: 0.2 }}
             className="flex items-center gap-3"
           >
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-semibold text-lg">P</span>
-            </div>
+            <img 
+              src={logo} 
+              alt="Positive Corner" 
+              className="w-10 h-10 md:w-12 md:h-12 object-contain"
+            />
             <div>
               <h1 className="font-display text-lg md:text-xl font-semibold text-foreground">
                 Positive Corner

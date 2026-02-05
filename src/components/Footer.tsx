@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, ArrowUpRight } from "lucide-react";
+import logo from "@/assets/logo.jpeg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,16 +18,20 @@ const Footer = () => {
             className="lg:col-span-2"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
-                <span className="text-primary font-semibold text-lg">P</span>
-              </div>
+              <img 
+                src={logo} 
+                alt="Positive Corner" 
+                className="w-12 h-12 object-contain bg-white rounded-lg p-1"
+              />
               <h3 className="font-display text-xl font-semibold">
                 Positive Corner
               </h3>
             </div>
-            <p className="text-primary-foreground/60 leading-relaxed max-w-md mb-8">
-              Your destination for premium jewelry, custom gear, electronics, and authentic 
-              sports merchandise. Crafting positivity together since 2020.
+            <p className="text-primary-foreground/60 leading-relaxed max-w-md mb-4">
+              Crafting Positivity Together
+            </p>
+            <p className="text-primary-foreground/60 leading-relaxed max-w-md mb-8 text-sm">
+              Personalized Everyday Items | Personal Shopping | Custom Products
             </p>
             
             {/* Social Links */}
