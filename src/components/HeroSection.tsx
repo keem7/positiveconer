@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import logo from "@/assets/logo.jpeg";
 
 const HeroSection = () => {
   const scrollToProducts = () => {
@@ -31,11 +32,13 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex justify-center"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest text-muted-foreground uppercase bg-secondary rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              Premium Collection 2025
-            </span>
+            <img 
+              src={logo} 
+              alt="Positive Corner Logo" 
+              className="w-32 h-32 md:w-40 md:h-40 object-contain"
+            />
           </motion.div>
 
           {/* Main Heading */}
@@ -45,9 +48,9 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-foreground mt-8 mb-6 leading-[1.1] tracking-tight"
           >
-            Discover
+            Positive
             <br />
-            <span className="text-gold-gradient">Exceptional</span> Style
+            <span className="text-gold-gradient">Corner</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -55,10 +58,19 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12"
+            className="text-xl md:text-2xl font-medium text-foreground mb-4"
           >
-            Curated collection of fine jewelry, premium accessories, and authentic 
-            sports merchandise. Quality crafted with passion.
+            Crafting Positivity Together
+          </motion.p>
+
+          {/* Services */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12"
+          >
+            Personalized Everyday Items | Personal Shopping | Custom Products
           </motion.p>
 
           {/* CTA Buttons */}
@@ -93,9 +105,9 @@ const HeroSection = () => {
             className="flex items-center justify-center gap-12 mt-20"
           >
             {[
-              { value: "50+", label: "Products" },
+              { value: "7+", label: "Collections" },
               { value: "Nationwide", label: "Delivery" },
-              { value: "70+", label: "Happy Customers" },
+              { value: "100%", label: "Customized" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
