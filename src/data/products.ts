@@ -209,57 +209,30 @@ export const products: Product[] = [
   },
   // Jerseys
   {
-    id: "j-001",
-    name: "Real Madrid Home Jersey",
+    id: "mu-001",
+    name: "Manchester United Home Kit",
     category: "jerseys",
-    subcategory: "Football Jerseys",
-    price: 89,
-    image: "/products/jersey-1.jpg",
+    subcategory: "Manchester United",
+    price: 350,
+    image: "/products/man-utd-home.jpg",
     description: "Get your own customized jersey"
   },
   {
-    id: "j-002",
-    name: "Barcelona Away Jersey",
+    id: "mu-002",
+    name: "Manchester United Away Kit",
     category: "jerseys",
-    subcategory: "Football Jerseys",
-    price: 89,
-    image: "/products/jersey-2.jpg",
+    subcategory: "Manchester United",
+    price: 350,
+    image: "/products/man-utd-away.jpg",
     description: "Get your own customized jersey"
   },
   {
-    id: "j-003",
-    name: "Manchester United Home",
+    id: "mu-003",
+    name: "Manchester United Third Kit",
     category: "jerseys",
-    subcategory: "Football Jerseys",
-    price: 89,
-    image: "/products/jersey-3.jpg",
-    description: "Get your own customized jersey"
-  },
-  {
-    id: "j-004",
-    name: "PSG Third Kit Jersey",
-    category: "jerseys",
-    subcategory: "Football Jerseys",
-    price: 95,
-    image: "/products/jersey-4.jpg",
-    description: "Get your own customized jersey"
-  },
-  {
-    id: "j-005",
-    name: "Liverpool Home Jersey",
-    category: "jerseys",
-    subcategory: "Football Jerseys",
-    price: 89,
-    image: "/products/jersey-5.jpg",
-    description: "Get your own customized jersey"
-  },
-  {
-    id: "j-006",
-    name: "Bayern Munich Home",
-    category: "jerseys",
-    subcategory: "Football Jerseys",
-    price: 89,
-    image: "/products/jersey-6.jpg",
+    subcategory: "Manchester United",
+    price: 350,
+    image: "/products/man-utd-third.jpg",
     description: "Get your own customized jersey"
   },
 ];
