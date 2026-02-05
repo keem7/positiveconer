@@ -39,6 +39,7 @@ const Index = () => {
         <ProductGrid
           activeCategory={activeCategory}
           onProductClick={setSelectedProduct}
+          onCategoryChange={handleCategoryChange}
         />
       </main>
 
