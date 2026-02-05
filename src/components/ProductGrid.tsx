@@ -2,26 +2,28 @@ import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Product, Category, products, categories } from "@/data/products";
 import ProductCard from "./ProductCard";
+import { ExternalLink } from "lucide-react";
 
 interface ProductGridProps {
   activeCategory: Category;
   onProductClick: (product: Product) => void;
+  onCategoryChange?: (category: Category) => void;
 }
 
-const ProductGrid = ({ activeCategory, onProductClick }: ProductGridProps) => {
-  // Group products by category for section view
-  const groupedProducts = useMemo(() => {
-    const groups: { category: typeof categories[0]; products: Product[] }[] = [];
-    
-    categories.forEach((cat) => {
-      if (cat.id === "all") return;
-      const categoryProducts = products.filter((p) => p.category === cat.id);
-      if (categoryProducts.length > 0) {
-        groups.push({ category: cat, products: categoryProducts });
-      }
-    });
-    
-    return groups;
+const ProductGrid = ({ activeCategory, onProductClick, onCategoryChange }: ProductGridProps) => {
+  // Get collections with a representative product for each category
+  const collections = useMemo(() => {
+    return categories
+      .filter((cat) => cat.id !== "all")
+      .map((cat) => {
+        const categoryProducts = products.filter((p) => p.category === cat.id);
+        return {
+          category: cat,
+          products: categoryProducts,
+          representativeProduct: categoryProducts[0] || null,
+        };
+      })
+      .filter((col) => col.representativeProduct !== null);
   }, []);
 
   const filteredProducts = useMemo(() => {
@@ -31,7 +33,9 @@ const ProductGrid = ({ activeCategory, onProductClick }: ProductGridProps) => {
     return products.filter((product) => product.category === activeCategory);
   }, [activeCategory]);
 
-  // If viewing all, show sections
+  const categoryData = categories.find((c) => c.id === activeCategory);
+
+  // If viewing all, show collection cards (one per category)
   if (activeCategory === "all") {
     return (
       <section id="products" className="py-24 md:py-32">
@@ -55,41 +59,67 @@ const ProductGrid = ({ activeCategory, onProductClick }: ProductGridProps) => {
             </h2>
           </motion.div>
 
-          {/* Category Sections */}
-          <div className="space-y-24">
-            {groupedProducts.map((group, groupIndex) => (
+          {/* Collection Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {collections.map((collection, index) => (
               <motion.div
-                key={group.category.id}
-                initial={{ opacity: 0, y: 40 }}
+                key={collection.category.id}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: groupIndex * 0.1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="group cursor-pointer"
+                onClick={() => onCategoryChange?.(collection.category.id)}
               >
-                {/* Section Header */}
-                <div className="flex items-end justify-between mb-10 pb-6 border-b border-border">
-                  <div>
-                    <h3 className="font-display text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
-                      {group.category.label}
-                    </h3>
-                    <p className="text-muted-foreground mt-2">
-                      {group.category.tagline}
-                    </p>
+                {/* Image Container */}
+                <div className="relative aspect-square overflow-hidden rounded-2xl bg-secondary">
+                  <motion.img
+                    src={collection.representativeProduct?.image}
+                    alt={collection.category.label}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "/placeholder.svg";
+                    }}
+                  />
+
+                  {/* Hover Overlay */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 bg-primary/20 backdrop-blur-[2px] flex items-center justify-center transition-opacity"
+                  >
+                    <motion.span
+                      initial={{ opacity: 0, y: 10 }}
+                      whileHover={{ opacity: 1, y: 0 }}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-background/95 text-foreground text-sm font-medium rounded-full shadow-elevated"
+                    >
+                      <ExternalLink size={14} />
+                      View Collection
+                    </motion.span>
+                  </motion.div>
+
+                  {/* Item Count Badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1.5 text-xs font-medium bg-background/95 backdrop-blur-sm text-foreground rounded-full shadow-soft">
+                      {collection.products.length} {collection.products.length === 1 ? "item" : "items"}
+                    </span>
                   </div>
-                  <span className="text-sm text-muted-foreground">
-                    {group.products.length} {group.products.length === 1 ? "item" : "items"}
-                  </span>
                 </div>
 
-                {/* Products Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                  {group.products.map((product, index) => (
-                    <ProductCard
-                      key={product.id}
-                      product={product}
-                      index={index % 4}
-                      onImageClick={onProductClick}
-                    />
-                  ))}
+                {/* Content */}
+                <div className="pt-5 pb-2">
+                  <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
+                    {collection.category.label}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {collection.category.tagline}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -99,9 +129,7 @@ const ProductGrid = ({ activeCategory, onProductClick }: ProductGridProps) => {
     );
   }
 
-  // Single category view
-  const categoryData = categories.find(c => c.id === activeCategory);
-
+  // Single category view - show all products in that category
   return (
     <section id="products" className="py-24 md:py-32">
       <div className="container mx-auto px-6 lg:px-8">
