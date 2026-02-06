@@ -235,6 +235,34 @@ export const products: Product[] = [
     image: "/products/man-utd-third.jpg",
     description: "Get your own customized jersey"
   },
+  // Arsenal
+  {
+    id: "ars-001",
+    name: "Arsenal Home Kit",
+    category: "jerseys",
+    subcategory: "Arsenal",
+    price: 350,
+    image: "/products/arsenal-home.jpg",
+    description: "Get your own customized jersey"
+  },
+  {
+    id: "ars-002",
+    name: "Arsenal Away Kit",
+    category: "jerseys",
+    subcategory: "Arsenal",
+    price: 350,
+    image: "/products/arsenal-away.jpg",
+    description: "Get your own customized jersey"
+  },
+  {
+    id: "ars-003",
+    name: "Arsenal Third Kit",
+    category: "jerseys",
+    subcategory: "Arsenal",
+    price: 350,
+    image: "/products/arsenal-third.jpg",
+    description: "Get your own customized jersey"
+  },
 ];
 
 export const WHATSAPP_NUMBER = "23278722136";
