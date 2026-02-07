@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { WHATSAPP_NUMBER } from "@/data/products";
 import logo from "@/assets/logo.jpeg";
 
 const HeroSection = () => {
@@ -88,7 +89,7 @@ const HeroSection = () => {
               <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
             </button>
             <a
-              href="https://wa.me/1234567890"
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 text-foreground font-medium rounded-full border border-border hover:bg-secondary transition-all duration-300"

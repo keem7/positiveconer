@@ -17,11 +17,8 @@ const Index = () => {
 
   const handleCategoryChange = (category: Category) => {
     setActiveCategory(category);
-    // Scroll to products section smoothly
-    const productsSection = document.getElementById("products");
-    if (productsSection) {
-      productsSection.scrollIntoView({ behavior: "smooth" });
-    }
+    // Scroll to top so user sees the new content
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
