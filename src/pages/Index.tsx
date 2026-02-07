@@ -17,8 +17,8 @@ const Index = () => {
 
   const handleCategoryChange = (category: Category) => {
     setActiveCategory(category);
-    // Scroll to top so user sees the new content
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Instantly scroll to top so user doesn't see footer during re-render
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   };
 
   return (
