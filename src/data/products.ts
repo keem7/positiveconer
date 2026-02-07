@@ -269,8 +269,8 @@ export const WHATSAPP_NUMBER = "23278722136";
 export const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export const generateWhatsAppMessage = (product: Product): string => {
-  const productUrl = `${window.location.origin}/product/${product.id}`;
-  const message = `Hello Positive Corner! I am interested in the ${product.name}.\n\n${productUrl}\n\nIs this available for order?`;
+  const categoryLabel = categories.find(c => c.id === product.category)?.label || product.category;
+  const message = `Hello Positive Corner! I am interested in the ${product.name} from the ${categoryLabel} section. Is this available for order?`;
   return encodeURIComponent(message);
 };
 
